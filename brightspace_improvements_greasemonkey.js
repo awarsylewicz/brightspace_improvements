@@ -4,9 +4,18 @@
 // @version      0.1
 // @description  Includes many Brightspace improvements, including automatically accepting the "Terms and Conditions", rearranging the assignments grading screen to make it user friendly, attendance stuff
 // @author       Aaron Warsylewicz
-// @match        https://saittest.desire2learn.com/d2l/*
+// @match        https://learn.sait.ca/d2l/*
 // @grant        none
 // ==/UserScript==
+
+/*
+THIS SOFTWARE IS PROVIDED BY THE AUTHOR ``AS IS'' AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO,
+THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE AUTHOR
+BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
+PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON
+ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY
+WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+*/
 
 (function() {
     'use strict';
@@ -21,10 +30,10 @@
         // resize and rearrange grading area
         rearrangeGrading();
 
-        // add auto-fill for register setup (ctrl-r)
+        // add auto-fill for register setup (Ctrl-Alt-r)
         autofillRegister();
 
-        // auto-fill all attendance data with "present"
+        // auto-fill all attendance data with "present" (Ctrl-Alt-p)
         autofillPresent();
     }, false);
 
