@@ -2,7 +2,7 @@
 // @name         Brightspace Improvements
 // @namespace    SAIT_ITSD
 // @version      0.1
-// @description  Includes many Brightspace improvements, including automatically accepting the "Terms and Conditions", rearranging the assignments grading screen to make it user friendly, attendance stuff
+// @description  Includes many Brightspace improvements, including keeping the session alive, rearranging the assignments grading screen to make it user friendly, attendance stuff
 // @author       Aaron Warsylewicz
 // @match        https://learn.sait.ca/d2l/*
 // @grant        none
@@ -21,8 +21,11 @@ WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH 
     'use strict';
 
     window.addEventListener('load', function() {
+        // keep the session alive by access the Brightspace home every 15 minutes
+        setInterval(keepAlive, 900000);
+
         // automatically agree and login
-        login();
+        //login();
 
         //. for the assignment listing, always show everyone
         showEveryone();
@@ -38,6 +41,11 @@ WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH 
     }, false);
 
 })();
+
+function keepAlive() {
+    var e = document.getElementById("d2l_body");
+    e.click();
+}
 
 function login() {
     var agreeId = document.getElementById("agreeId");
