@@ -2,7 +2,7 @@
 // @name         Brightspace Improvements
 // @namespace    SAIT_ITSD
 // @version      0.1
-// @description  Includes many Brightspace improvements, including keeping the session alive, rearranging the assignments grading screen to make it user friendly, attendance stuff
+// @description  Includes many Brightspace improvements, including automatically accepting the "Terms and Conditions", rearranging the assignments grading screen to make it user friendly, attendance stuff
 // @author       Aaron Warsylewicz
 // @match        https://learn.sait.ca/d2l/*
 // @grant        none
@@ -43,8 +43,15 @@ WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH 
 })();
 
 function keepAlive() {
-    var e = document.getElementById("d2l_body");
-    e.click();
+    var element = document.createElement("iframe");
+    element.setAttribute('id', 'myframeKeepAlive');
+    element.style.visibility = "hidden";
+    document.body.appendChild(element);
+    element.src = "https://learn.sait.ca/d2l/home";
+    setTimeout(function() {
+        var e = document.getElementById("myframeKeepAlive");
+        e.parentNode.removeChild(e);
+    }, 10000);
 }
 
 function login() {
@@ -85,12 +92,15 @@ function doRearrangeGrading() {
         //alert(gradingbox.innerHTML);
         rightside.style.position = "fixed";
         rightside.style.top = "0px";
-        rightside.style.left = "600px";
+        rightside.style.left = "800px";
         rightside.style.width = "800px";
         rightside.style.height = "100%";
         rightside.style.backgroundColor = "#cccccc";
 
         document.getElementById("feedback").style.width = "750px";
+        // document.getElementById("feedback").style.height = "550px";
+        document.getElementById('feedback$html_ifr').contentWindow.document.getElementById("tinymce").style.fontSize = "8pt";
+        document.getElementById('feedback$html_ifr').contentWindow.document.getElementById("tinymce").style.lineHeight = "1rem";
 
         rightside.style.fontSize = "smaller";
 
