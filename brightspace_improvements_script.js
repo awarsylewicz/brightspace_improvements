@@ -24,9 +24,6 @@ WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH 
         // keep the session alive by access the Brightspace home every 15 minutes
         setInterval(keepAlive, 900000);
 
-        // automatically agree and login
-        //login();
-
         //. for the assignment listing, always show everyone
         showEveryone();
 
@@ -52,14 +49,6 @@ function keepAlive() {
         var e = document.getElementById("myframeKeepAlive");
         e.parentNode.removeChild(e);
     }, 10000);
-}
-
-function login() {
-    var agreeId = document.getElementById("agreeId");
-    if (agreeId != null) {
-        document.getElementById("agreeId").click();
-        document.getElementById("acceptId").click();
-    }
 }
 
 function showEveryone() {
